@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import Dashboard from './Components/Dashboard';
+import Form from './Components/Form';
 
 function App() {
-  return <Dashboard />;
+  return <Form />;
 }
 
 export default App;
