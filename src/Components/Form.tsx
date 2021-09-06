@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { fetchData } from '../ApiClient/fetchData';
+import { useHistory } from 'react-router-dom';
 
 const Form = () => {
   const [step, setStep] = useState(1);
-  const [stock, setStock] = useState('');
+  const [selectedStock, setSelectedStock] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [showError, setShowError] = useState(false);
-  const [searchQuery, setSearchQuery] = useState({});
 
-  // async function getData() {
-  //   const res = await fetchData('HD', '2017-12-26', '2017-12-28');
-  //   console.log('res', res);
-  // }
-
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  const history = useHistory();
 
   useEffect(() => {
     showError && setShowError(false);
   }, [step]);
+
+  useEffect(() => {}, []);
 
   const checkStep = () => {
     if (step === 1) return selectStock();
@@ -31,9 +25,10 @@ const Form = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (step === 1 && stock) setStep(2);
+    if (step === 1 && selectedStock) setStep(2);
     else if (step === 2 && startDate) setStep(3);
-    if (step === 3) setSearchQuery({ stock, startDate, endDate });
+    else if (step === 3 && endDate)
+      history.push('/dashboard', { selectedStock, startDate, endDate });
     else setShowError(true);
   };
 
@@ -45,8 +40,8 @@ const Form = () => {
           className="border-2"
           type="text"
           name="Stock"
-          value={stock}
-          onChange={(event) => setStock(event.target.value)}
+          value={selectedStock}
+          onChange={(event) => setSelectedStock(event.target.value)}
         />
         <input type="submit" value="Submit" />
       </label>
