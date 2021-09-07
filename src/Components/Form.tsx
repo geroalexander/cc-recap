@@ -33,58 +33,73 @@ const Form = () => {
   };
 
   const selectStock = () => (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Stock:
-        <input
-          className="border-2"
-          type="text"
-          name="Stock"
-          value={selectedStock}
-          onChange={(event) => setSelectedStock(event.target.value)}
-        />
-        <input type="submit" value="Submit" />
-      </label>
+    <form onSubmit={handleSubmit} className="flex items-center flex-col">
+      <h1 className="text-4xl text-white pb-6 font-bold">
+        Enter a stock symbol:
+      </h1>
+      <input
+        className="bg-transparent text-center text-white text-3xl w-full border-b-2 outline-none py-1 mb-7"
+        type="text"
+        name="Stock"
+        value={selectedStock}
+        onChange={(event) => setSelectedStock(event.target.value)}
+        placeholder="Type your stock here..."
+      />
+      <input
+        type="submit"
+        value="Next"
+        className="bg-transparent text-white border-white-900 border-2 px-4 py-2 rounded-md"
+      />
     </form>
   );
 
   const selectStart = () => (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Selet start date
-        <input
-          className="border-2"
-          type="date"
-          name="Start"
-          value={startDate}
-          onChange={(event) => setStartDate(event.target.value)}
-        />
-        <input type="submit" value="Submit" />
-      </label>
+    <form onSubmit={handleSubmit} className="flex items-center flex-col">
+      <h1 className="text-4xl text-white pb-6 font-bold">
+        Choose a start date...
+      </h1>
+      <input
+        className="bg-transparent text-start text-black text-3xl w-full border-b-2 border-black outline-none py-1 mb-7 filter invert"
+        type="date"
+        name="Start"
+        value={startDate}
+        onChange={(event) => setStartDate(event.target.value)}
+      />
+      <input
+        type="submit"
+        value="Next"
+        className="bg-transparent text-white border-white-900 border-2 px-4 py-2 rounded-md"
+      />
     </form>
   );
 
   const selectEnd = () => (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Select end date
-        <input
-          className="border-2"
-          type="date"
-          name="End"
-          value={endDate}
-          onChange={(event) => setEndDate(event.target.value)}
-        />
-        <input type="submit" value="Submit" />
-      </label>
+    <form onSubmit={handleSubmit} className="flex items-center flex-col">
+      <h1 className="text-4xl text-white pb-6 font-bold">...and a end date.</h1>
+      <input
+        className="bg-transparent text-start text-black text-3xl w-full border-b-2 border-black outline-none py-1 mb-7 filter invert"
+        type="date"
+        name="End"
+        value={endDate}
+        onChange={(event) => setEndDate(event.target.value)}
+      />
+      <input
+        type="submit"
+        value="Next"
+        className="bg-transparent text-white border-white-900 border-2 px-4 py-2 rounded-md"
+      />
     </form>
   );
 
   return (
-    <>
-      <div className="flex justify-center ">{checkStep()}</div>
-      {showError && <p>error</p>}
-    </>
+    <div className="flex justify-center h-screen items-center bg-gradient-to-br from-gray-900 via-recap-blue to-gray-800 font-mono flex-col">
+      {checkStep()}
+      {showError && (
+        <p className="bg-transparent m-4 absolute mt-80 z-10 justify-center items-center w-auto text-center text-red-500 font-bold">
+          Please enter appropriate values.
+        </p>
+      )}
+    </div>
   );
 };
 
