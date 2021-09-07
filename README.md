@@ -12,10 +12,10 @@ A web application built with React.js that allows the user to input a stock symb
 
 ### Using the application
 
-1. Type in a stock symbol (ticket) *in the right format*. eg. Facebook is FB, Home Depo, is HD, etc.
+1. Type in a stock symbol (ticker) *in the right format*. eg. Facebook is FB, Home Depot is HD, etc.
 2. Select a start date
 3. Select an end date (must be after the start date)
-4. NOTE: The free version only has limited data for each stock. If it doesn't work, try again with a differnt date range or make sure your stock symbol is correct.
+4. NOTE: The free version only has limited data for each stock. If it doesn't work, try again with a different date range or make sure your stock symbol is correct.
 
 
 ### Tech Stack
