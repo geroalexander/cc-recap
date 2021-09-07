@@ -14,8 +14,7 @@ const Form = () => {
     showError && setShowError(false);
   }, [step]);
 
-  useEffect(() => {}, []);
-
+  // checks what step of the form user is at, then returns JSX.
   const checkStep = () => {
     if (step === 1) return selectStock();
     else if (step === 2) return selectStart();
@@ -25,6 +24,7 @@ const Form = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    // update the state of step or push to dashboard
     if (step === 1 && selectedStock) setStep(2);
     else if (step === 2 && startDate) setStep(3);
     else if (step === 3 && endDate)
@@ -42,7 +42,7 @@ const Form = () => {
         type="text"
         name="Stock"
         value={selectedStock}
-        onChange={(event) => setSelectedStock(event.target.value)}
+        onChange={(event) => setSelectedStock(event.target.value.toUpperCase())}
         placeholder="Type your stock here..."
       />
       <input
@@ -91,6 +91,7 @@ const Form = () => {
     </form>
   );
 
+  // JSX is rendered conditionally. If there is an error, error message will be rendered as well.
   return (
     <div className="flex justify-center h-screen items-center bg-gradient-to-br from-gray-900 via-recap-blue to-gray-800 font-mono flex-col">
       {checkStep()}

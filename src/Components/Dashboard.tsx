@@ -1,4 +1,4 @@
-import React, { SetStateAction, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import { fetchData } from '../ApiClient/fetchData';
 import StockChart from '../Components/StockChart';
@@ -20,14 +20,15 @@ const Dashboard = ({
   const [mdd, setMDD] = useState('');
   const [ror, setRoR] = useState('');
 
-  const [fail, setFail] = useState('');
+  const [fail, setFail] = useState(false);
 
+  // fetch data when component renders with user input. If request fails, update fail state.
   async function getData() {
     try {
       const res = await fetchData(selectedStock, startDate, endDate);
       setData(res.data);
     } catch (error) {
-      setFail('Cannot find data on your stock. Try again!');
+      setFail(true);
     }
   }
 
@@ -67,7 +68,7 @@ const Dashboard = ({
       ) : null}
       {fail && (
         <div className="flex flex-col text-white text-xl justify-center items-center">
-          {fail}{' '}
+          Cannot find data on your stock. Try again!
           <Link to="/">
             <h1 className="text-white text-6xl pb-1">&#8634;</h1>
           </Link>
