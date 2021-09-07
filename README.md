@@ -6,7 +6,7 @@ A web application built with React.js that allows the user to input a stock symb
 
 1. install dependencies ``` npm install ```
 2. create a .env file in the root folder ``` touch .env ```
-3. in the .env file, set variable ```REACT_APP_QUANDL_API_KEY="YOUR API KEY"``` - create a free account on [quandl](https://www.quandl.com/) to generate your API key.
+3. in the .env file, set the variable ```REACT_APP_QUANDL_API_KEY="YOUR API KEY"``` - create a free account on [quandl](https://www.quandl.com/) to generate your API key.
 4. start the development server with ``` npm start ``` or ``` nodemon ``` - see how to install nodemon [here](https://www.npmjs.com/package/nodemon).
 
 
