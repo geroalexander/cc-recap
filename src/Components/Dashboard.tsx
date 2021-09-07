@@ -26,7 +26,8 @@ const Dashboard = ({
   async function getData() {
     try {
       const res = await fetchData(selectedStock, startDate, endDate);
-      setData(res.data);
+      if (!res.data.length) setFail(true);
+      else setData(res.data);
     } catch (error) {
       setFail(true);
     }
