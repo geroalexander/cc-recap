@@ -33,8 +33,8 @@ const calculateMDD = (data) => {
 };
 
 const calculateRoR = (data) => {
-  const startDateValue = data[data.length - 1][11];
-  const endDateValue = data[0][11];
+  const endDateValue = data[data.length - 1][11];
+  const startDateValue = data[0][11];
 
   const RoR = ((endDateValue - startDateValue) / startDateValue) * 100;
   return RoR.toFixed(2);
