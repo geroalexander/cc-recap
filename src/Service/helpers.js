@@ -30,7 +30,7 @@ const calculateMDD = (data) => {
           curDrawDown =
             ((curTrough.value - curPeak.value) / curPeak.value) * 100;
 
-          if (maxDrawDown > curDrawDown) maxDrawDown = curDrawDown;
+          if (maxDrawDown < curDrawDown) maxDrawDown = curDrawDown;
         }
       }
     }
